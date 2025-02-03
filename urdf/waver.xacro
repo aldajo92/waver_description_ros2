@@ -249,17 +249,17 @@
   </joint>
 
   <joint name="wheel_front_right_joint" type="continuous">
-    <origin xyz="${position_wfr_joint}" rpy="0 0 0" />
+    <origin xyz="${position_wfr_joint}" rpy="0 0 ${pi}" />
     <parent link="base_link" />
     <child link="wheel_front_right_link" />
-    <axis xyz="0 1 0" />
+    <axis xyz="0 -1 0" />
   </joint>
 
   <joint name="wheel_back_right_joint" type="continuous">
-    <origin xyz="${position_wbr_joint}" rpy="0 0 0" />
+    <origin xyz="${position_wbr_joint}" rpy="0 0 ${pi}" />
     <parent link="base_link" />
     <child link="wheel_back_right_link" />
-    <axis xyz="0 1 0" />
+    <axis xyz="0 -1 0" />
   </joint>
 
 </robot>
