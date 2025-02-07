@@ -13,7 +13,7 @@
     <xacro:property name="pos_x_base" value="2.838767506182194e-05" />
     <xacro:property name="pos_y_base" value="-6.582658272236586e-06" />
     <xacro:property name="pos_z_base" value="0.002703800678253174" />
-    <xacro:property name="mass_base" value="0.37038398045076265" />
+    <xacro:property name="mass_base" value="1.37038398045076265" />
     <xacro:property name="mass_center_base" value="${pos_x_base} ${pos_y_base} ${pos_z_base}" />
     <xacro:property name="position_base" value="${-pos_x_base} ${-pos_y_base} ${-pos_z_base}" />
 
@@ -89,7 +89,7 @@
     <xacro:property name="pos_x_wfr" value="-0.06528724670410156" />
     <xacro:property name="pos_y_wfr" value="-0.048593093872070316" />
     <xacro:property name="pos_z_wfr" value="0.004798998355865478" />
-    <xacro:property name="mass_wfr" value="1.0170112199417978" />
+    <xacro:property name="mass_wfr" value="1.0170123141691128" />
     <xacro:property name="mass_center_wfr" value="${pos_x_wfr} ${pos_y_wfr} ${pos_z_wfr}" />
     <xacro:property name="position_wfr" value="${pos_y_wfr} ${-pos_x_wfr} ${-pos_z_wfr}" />
     <xacro:property name="position_wfr_joint" value="${-pos_y_wfr} ${pos_x_wfr} ${pos_z_wfr}"/>

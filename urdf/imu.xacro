@@ -32,7 +32,7 @@
     </joint>
 
     <gazebo reference="imu_link">
-        <sensor name="imu_sensor" type="imu">
+        <!-- <sensor name="imu_sensor" type="imu">
             <always_on>true</always_on>
             <update_rate>100</update_rate>
             <visualize>true</visualize>
@@ -50,6 +50,18 @@
                     <random_walk>0.0002</random_walk>
                 </imu_parameters>
             </plugin>
+        </sensor> -->
+        <sensor name="imu_sensor" type="imu">
+        <!-- ensure the sensor is active (required) -->
+        <always_on>true</always_on>
+        <update_rate>50</update_rate>
+        <plugin name="my_imu_plugin" filename="libgazebo_ros_imu_sensor.so">
+            <ros>
+            <!-- publish to /imu/data -->
+            <namespace>/imu</namespace>
+            <remapping>~/out:=data</remapping>
+            </ros>
+        </plugin>
         </sensor>
     </gazebo>
 </robot>

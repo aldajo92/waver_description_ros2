@@ -100,7 +100,7 @@
         <!-- <publish_wheel_tf>true</publish_wheel_tf> -->
         <!-- <publish_wheel_joint_state>true</publish_wheel_joint_state> -->
 
-        <torque>15.0</torque>
+        <torque>30.0</torque>
       </plugin>
     </gazebo>
 
