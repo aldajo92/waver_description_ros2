@@ -9,7 +9,6 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
     waver_description_dir = get_package_share_directory('waver_description')
 
     world_path = os.path.join(
@@ -19,7 +18,6 @@ def generate_launch_description():
 
     model_paths = [
         os.path.join('/usr/share/gazebo-11', 'models')
-        # os.path.join(waver_description_dir)
     ]
 
     plugin_paths = [
@@ -66,8 +64,5 @@ def generate_launch_description():
 
     return LaunchDescription([
         gzserver_command,
-        gzclient_command,
-        # robot_state_publisher,            # uncomment to see the yahboomcar in the gazebo
-        # joint_state_publisher_node,       # uncomment to see the yahboomcar in the gazebo
-        # spawn_entity_node,                # uncomment to see the yahboomcar in the gazebo
+        gzclient_command
     ])

@@ -3,10 +3,10 @@
 
   <xacro:include filename="$(find waver_description)/urdf/materials.xacro" />
   <xacro:include filename="$(find waver_description)/urdf/util.xacro" />
-  <xacro:include filename="$(find waver_description)/urdf/waver.trans.xacro" />
+  <!-- <xacro:include filename="$(find waver_description)/urdf/waver.trans.xacro" /> -->
   <xacro:include filename="$(find waver_description)/urdf/waver.gazebo.xacro" />
-  <xacro:include filename="$(find waver_description)/urdf/lidar.xacro" />
-  <xacro:include filename="$(find waver_description)/urdf/imu.xacro" />
+  <!-- <xacro:include filename="$(find waver_description)/urdf/lidar.xacro" /> -->
+  <!-- <xacro:include filename="$(find waver_description)/urdf/imu.xacro" /> -->
 
   <!-- ******************************* Links ******************************* -->
 
@@ -21,14 +21,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/base_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/base_link.stl" scale="${scale}" />
       </geometry>
       <xacro:dark_gray_material />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/base_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/base_link.stl" scale="${scale}" />
       </geometry>
     </collision>
   </link>
@@ -42,14 +42,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/top_shell_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/top_shell_link.stl" scale="${scale}" />
       </geometry>
       <xacro:dark_gray_material />
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/top_shell_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/top_shell_link.stl" scale="${scale}" />
       </geometry>
     </collision>
   </link>
@@ -63,14 +63,14 @@
     <visual>
       <origin xyz="${position_acces}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/accessories_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/accessories_link.stl" scale="${scale}" />
       </geometry>
       <xacro:black_material />
     </visual>
     <collision>
       <origin xyz="${position_acces}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/accessories_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/accessories_link.stl" scale="${scale}" />
       </geometry>
     </collision>
   </link>
@@ -84,14 +84,14 @@
     <visual>
       <origin xyz="${position_acces1}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/accessories1_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/accessories1_link.stl" scale="${scale}" />
       </geometry>
       <xacro:black_material />
     </visual>
     <collision>
       <origin xyz="${position_acces1}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/accessories1_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/accessories1_link.stl" scale="${scale}" />
       </geometry>
     </collision>
   </link>
@@ -105,14 +105,14 @@
     <visual>
       <origin xyz="${position_screen}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/oled_screen_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/oled_screen_link.stl" scale="${scale}" />
       </geometry>
       <xacro:dark_blue_material />
     </visual>
     <collision>
       <origin xyz="${position_screen}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/oled_screen_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/oled_screen_link.stl" scale="${scale}" />
       </geometry>
     </collision>
   </link>
@@ -126,14 +126,14 @@
     <visual>
       <origin xyz="${position_wbl}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/wheel_back_left_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/wheel_back_left_link.stl" scale="${scale}" />
       </geometry>
       <xacro:black_material />
     </visual>
     <collision>
       <origin xyz="${position_wbl}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/wheel_back_left_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/wheel_back_left_link.stl" scale="${scale}" />
       </geometry>
     </collision>
   </link>
@@ -147,14 +147,14 @@
     <visual>
       <origin xyz="${position_wfl}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/wheel_front_left_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/wheel_front_left_link.stl" scale="${scale}" />
       </geometry>
       <xacro:black_material />
     </visual>
     <collision>
       <origin xyz="${position_wfl}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/wheel_front_left_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/wheel_front_left_link.stl" scale="${scale}" />
       </geometry>
     </collision>
   </link>
@@ -168,14 +168,14 @@
     <visual>
       <origin xyz="${position_wfr}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/wheel_front_right_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/wheel_front_right_link.stl" scale="${scale}" />
       </geometry>
       <xacro:black_material />
     </visual>
     <collision>
       <origin xyz="${position_wfr}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/wheel_front_right_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/wheel_front_right_link.stl" scale="${scale}" />
       </geometry>
     </collision>
   </link>
@@ -189,14 +189,14 @@
     <visual>
       <origin xyz="${position_wbr}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/wheel_back_right_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/wheel_back_right_link.stl" scale="${scale}" />
       </geometry>
       <xacro:black_material />
     </visual>
     <collision>
       <origin xyz="${position_wbr}" rpy="0 0 ${pi/2}" />
       <geometry>
-        <mesh filename="package://waver_description/meshes/wheel_back_right_link.stl" scale="${scale}" />
+        <mesh filename="file:///$(find waver_description)/meshes/wheel_back_right_link.stl" scale="${scale}" />
       </geometry>
     </collision>
   </link>

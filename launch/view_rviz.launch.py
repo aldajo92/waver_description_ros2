@@ -59,18 +59,10 @@ def generate_launch_description():
         arguments=["-d", rviz_config_file]
     )
 
-    # Spawning the Waver robot into Gazebo
-    spawn_entity_node = Node(
-        package='gazebo_ros',
-        executable='spawn_entity.py',
-        arguments=['-entity', 'waver', '-file', Command(['xacro ', waver_xacro_file]), '-x', '1.15', '-y', '-0.8', '-z', '0.5'],
-        output='screen'
-    )
 
     return LaunchDescription([
         DeclareLaunchArgument('use_sim_time', default_value='false', description='Use simulation (Gazebo) clock'),
         robot_state_publisher,
         joint_state_publisher_gui,  # Only needed for interactive joints
-        rviz,
-        spawn_entity_node
+        rviz
     ])

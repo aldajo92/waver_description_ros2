@@ -13,14 +13,14 @@
         <visual>
             <origin xyz="${position_imu}" rpy="0 0 ${pi/2}" />
             <geometry>
-                <mesh filename="package://waver_description/meshes/board_link.stl" scale="${scale}" />
+                <mesh filename="file:///$(find waver_description)/meshes/board_link.stl" scale="${scale}" />
             </geometry>
             <xacro:dark_green_material />
         </visual>
         <collision>
             <origin xyz="${position_imu}" rpy="0 0 ${pi/2}" />
             <geometry>
-                <mesh filename="package://waver_description/meshes/board_link.stl" scale="${scale}" />
+                <mesh filename="file:///$(find waver_description)/meshes/board_link.stl" scale="${scale}" />
             </geometry>
         </collision>
     </link>
@@ -31,25 +31,25 @@
         <child link="imu_link" />
     </joint>
 
-    <gazebo reference="imu_link">
-        <material>Gazebo/Orange</material>
-        <gravity>true</gravity>
+    <!-- <gazebo reference="imu_link">
         <sensor name="imu_sensor" type="imu">
             <always_on>true</always_on>
             <update_rate>100</update_rate>
             <visualize>true</visualize>
-            <topic>imu</topic>
-            <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-                <topicName>imu</topicName>
-                <bodyName>imu_link</bodyName>
-                <updateRateHZ>10.0</updateRateHZ>
-                <gaussianNoise>0.0</gaussianNoise>
-                <xyzOffset>0 0 0</xyzOffset>
-                <rpyOffset>0 0 0</rpyOffset>
-                <frameName>imu_link</frameName>
-                <initialOrientationAsReference>false</initialOrientationAsReference>
+            <plugin filename="libgazebo_ros_imu_sensor.so" name="gazebo_ros_imu_sensor">
+                <ros>
+                    <namespace></namespace>
+                    <remapping>imu:=imu/data_raw</remapping>
+                </ros>
+                <frame_name>imu_link</frame_name>
+                <update_rate>100.0</update_rate>
+                <orientation_reference_frame>world</orientation_reference_frame>
+                <imu_parameters>
+                    <noise_density>0.0025</noise_density>
+                    <bias_correlation_time>1000000.0</bias_correlation_time>
+                    <random_walk>0.0002</random_walk>
+                </imu_parameters>
             </plugin>
-            <pose>0 0 0 0 0 0</pose>
         </sensor>
-    </gazebo>
+    </gazebo> -->
 </robot>
