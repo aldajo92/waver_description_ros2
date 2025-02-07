@@ -90,12 +90,31 @@
         <publish_odom_tf>true</publish_odom_tf>
       </plugin>
     </gazebo> -->
-    <gazebo>
+    <!-- <gazebo>
       <plugin name="four_wheel_drive_controller" filename="libwaver_description.so">
         <ros>
           <argument>cmd_vel:=/cmd_vel</argument>
         </ros>
       </plugin>
-    </gazebo>
+    </gazebo> -->
+    <gazebo>
+      <plugin name="gazebo_ros_diff_drive" filename="libgazebo_ros_diff_drive.so">
+          <ros>
+            <namespace>/</namespace>
+            <argument>cmd_vel:=cmd_vel</argument>
+          </ros>
+          <always_on>true</always_on>
+          <legacyMode>true</legacyMode>
+          <update_rate>20</update_rate>
+          <num_wheel_pairs>2</num_wheel_pairs>
+          <left_joint>wheel_front_left_joint</left_joint>  <!-- Adjust joint name as per your setup -->
+          <left_joint>wheel_back_left_joint</left_joint>
+          <right_joint>wheel_front_right_joint</right_joint> <!-- Adjust joint name as per your setup -->
+          <right_joint>wheel_back_right_joint</right_joint>
+          <wheel_separation>1.0</wheel_separation>
+          <wheel_diameter>0.3</wheel_diameter>
+          <torque>15.0</torque>
+        </plugin>
+      </gazebo>
 
 </robot>
