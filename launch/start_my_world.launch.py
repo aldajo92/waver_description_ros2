@@ -23,7 +23,7 @@ def generate_launch_description():
     plugin_paths = [
         '/usr/share/gazebo-11'
     ]
-
+    
     model_path_str = ':'.join(model_paths)
     plugin_path_str = ':'.join(plugin_paths)
 

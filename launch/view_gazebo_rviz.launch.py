@@ -3,11 +3,12 @@ from launch_ros.actions import Node
 from launch import LaunchDescription
 from launch.substitutions import Command
 from launch.actions import ExecuteProcess
+from launch.actions import DeclareLaunchArgument
 from ament_index_python.packages import get_package_share_directory
 from launch.substitutions import LaunchConfiguration
 
 def generate_launch_description():
-    use_sim_time = LaunchConfiguration('use_sim_time', default='false')
+    use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
     xacro_file = os.path.join(
         get_package_share_directory('waver_description'),
@@ -25,7 +26,7 @@ def generate_launch_description():
                                  name='robot_state_publisher',
                                  output='both',
                                  parameters=[{
-                                     'robot_description': Command(['xacro ', xacro_file])
+                                     'use_sim_time': use_sim_time, 'robot_description': Command(['xacro ', xacro_file])
                                      }])
 
     # Spawn the robot in Gazebo
@@ -37,9 +38,33 @@ def generate_launch_description():
     # Start Gazebo with my empty world
     world = os.path.join(get_package_share_directory('waver_description'), 'worlds', 'my_empty_world.world')
     gazebo_node = ExecuteProcess(cmd=['gazebo', '--verbose', world, '-s', 'libgazebo_ros_factory.so'], output='screen')
+    
+    joint_state_publisher = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        output='screen'
+    )
+    
+    # Rviz Configuration
+    rviz_config_file = os.path.join(
+        get_package_share_directory('waver_description'),
+        'rviz',
+        'config.rviz'
+    )
+
+    rviz = Node(
+        package="rviz2",
+        executable="rviz2",
+        name="rviz2",
+        output="screen",
+        arguments=["-d", rviz_config_file]
+    )
 
     return LaunchDescription([
+        DeclareLaunchArgument('use_sim_time', default_value='true', description='Use simulation (Gazebo) clock'),
         robot_state_publisher, 
         spawn_entity_robot, 
-        gazebo_node
+        gazebo_node,
+        joint_state_publisher,
+        rviz
         ])

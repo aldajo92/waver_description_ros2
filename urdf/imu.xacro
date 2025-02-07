@@ -31,7 +31,7 @@
         <child link="imu_link" />
     </joint>
 
-    <!-- <gazebo reference="imu_link">
+    <gazebo reference="imu_link">
         <sensor name="imu_sensor" type="imu">
             <always_on>true</always_on>
             <update_rate>100</update_rate>
@@ -51,5 +51,5 @@
                 </imu_parameters>
             </plugin>
         </sensor>
-    </gazebo> -->
+    </gazebo>
 </robot>
