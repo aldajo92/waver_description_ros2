@@ -37,4 +37,10 @@
         </material>
     </xacro:macro>
 
+    <xacro:macro name="green_material">
+        <material name="green">
+            <color rgba="0.0 1.0 0.0 1.0"/>
+        </material>
+    </xacro:macro>
+
 </robot>
