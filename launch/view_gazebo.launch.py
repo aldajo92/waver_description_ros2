@@ -35,7 +35,7 @@ def generate_launch_description():
                               output='screen')
 
     # Start Gazebo with my empty world
-    world = os.path.join(get_package_share_directory('waver_description'), 'worlds', 'coworking.world')
+    world = os.path.join(get_package_share_directory('waver_description'), 'worlds', 'world.world')
     gazebo_node = ExecuteProcess(cmd=['gazebo', '--verbose', world, '-s', 'libgazebo_ros_factory.so'], output='screen')
 
     return LaunchDescription([
