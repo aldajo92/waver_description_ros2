@@ -6,6 +6,7 @@ from launch.actions import ExecuteProcess
 from launch.actions import DeclareLaunchArgument
 from ament_index_python.packages import get_package_share_directory
 from launch.substitutions import LaunchConfiguration
+from launch.actions import TimerAction
 
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
@@ -30,14 +31,26 @@ def generate_launch_description():
                                      }])
 
     # Spawn the robot in Gazebo
-    spawn_entity_robot = Node(package='gazebo_ros',
-                              executable='spawn_entity.py',
-                              arguments=['-entity', 'waver', '-topic', 'robot_description'],
-                              output='screen')
+    spawn_entity_robot = TimerAction(
+        period=2.0,  # Wait a couple of seconds
+        actions=[
+            Node(
+                package='gazebo_ros',
+                executable='spawn_entity.py',
+                arguments=['-entity', 'waver', '-topic', 'robot_description'],
+                output='screen'
+            )
+        ]
+    )
 
     # Start Gazebo with my empty world
     world = os.path.join(get_package_share_directory('waver_description'), 'worlds', 'world.world')
-    gazebo_node = ExecuteProcess(cmd=['gazebo', '--verbose', world, '-s', 'libgazebo_ros_factory.so'], output='screen')
+    gazebo_node = ExecuteProcess(
+        cmd=['gazebo', '--verbose', world,
+            '-s', 'libgazebo_ros_init.so',
+            '-s', 'libgazebo_ros_factory.so'],
+        output='screen'
+    )
     
     joint_state_publisher = Node(
         package='joint_state_publisher',
@@ -65,6 +78,6 @@ def generate_launch_description():
         robot_state_publisher, 
         spawn_entity_robot, 
         gazebo_node,
-        joint_state_publisher,
+        # joint_state_publisher,
         rviz
         ])

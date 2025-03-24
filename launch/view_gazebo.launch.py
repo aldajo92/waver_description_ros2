@@ -4,6 +4,7 @@ from launch import LaunchDescription
 from launch.substitutions import Command
 from launch.actions import ExecuteProcess
 from ament_index_python.packages import get_package_share_directory
+from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 
 def generate_launch_description():
@@ -36,9 +37,15 @@ def generate_launch_description():
 
     # Start Gazebo with my empty world
     world = os.path.join(get_package_share_directory('waver_description'), 'worlds', 'world.world')
-    gazebo_node = ExecuteProcess(cmd=['gazebo', '--verbose', world, '-s', 'libgazebo_ros_factory.so'], output='screen')
+    gazebo_node = ExecuteProcess(
+        cmd=['gazebo', '--verbose', world,
+            '-s', 'libgazebo_ros_init.so',
+            '-s', 'libgazebo_ros_factory.so'],
+        output='screen'
+    )
 
     return LaunchDescription([
+        DeclareLaunchArgument('use_sim_time', default_value='true', description='Use simulation (Gazebo) clock'),
         robot_state_publisher, 
         spawn_entity_robot, 
         gazebo_node

@@ -81,7 +81,7 @@
         </ros>
         <always_on>true</always_on>
         <legacy_mode>true</legacy_mode>
-        <update_rate>20</update_rate>
+        <update_rate>50</update_rate>
         <num_wheel_pairs>2</num_wheel_pairs>
         <left_joint>wheel_front_left_joint</left_joint>
         <left_joint>wheel_back_left_joint</left_joint>
@@ -90,17 +90,18 @@
         <wheel_separation>${wheel_separation}</wheel_separation>
         <wheel_diameter>${wheel_radius * 2}</wheel_diameter>
 
-          <!-- Output -->
-        <!-- <odometry_frame>odom</odometry_frame> -->
-        <!-- <robot_base_frame>base_link</robot_base_frame> -->
-        <!-- <odometrySource>1</odometrySource> -->
+        <!-- Output -->
+        <odometry_frame>odom</odometry_frame>
+        <odometry_topic>odom</odometry_topic>
+        <robot_base_frame>base_footprint</robot_base_frame>
+        <odometry_source>1</odometry_source>
 
-        <!-- <publish_odom>true</publish_odom> -->
-        <!-- <publish_odom_tf>true</publish_odom_tf> -->
-        <!-- <publish_wheel_tf>true</publish_wheel_tf> -->
-        <!-- <publish_wheel_joint_state>true</publish_wheel_joint_state> -->
+        <publish_odom>true</publish_odom>
+        <publish_odom_tf>true</publish_odom_tf>
+        <publish_wheel_tf>true</publish_wheel_tf>
+        <publish_wheel_joint_state>true</publish_wheel_joint_state>
 
-        <torque>30.0</torque>
+        <torque>60.0</torque>
       </plugin>
     </gazebo>
 
