@@ -52,11 +52,12 @@ def generate_launch_description():
         output='screen'
     )
     
-    joint_state_publisher = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
-        output='screen'
-    )
+    ## DISABLED: Joint states are published by gazebo 
+    # joint_state_publisher = Node(
+    #     package='joint_state_publisher',
+    #     executable='joint_state_publisher',
+    #     output='screen'
+    # )
     
     # Rviz Configuration
     rviz_config_file = os.path.join(
@@ -78,6 +79,6 @@ def generate_launch_description():
         robot_state_publisher, 
         spawn_entity_robot, 
         gazebo_node,
-        # joint_state_publisher,
+        # joint_state_publisher, ## DISABLED: Joint states are published by gazebo 
         rviz
         ])
